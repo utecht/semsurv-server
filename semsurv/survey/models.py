@@ -25,8 +25,8 @@ class OptionGroup(models.Model):
 class Option(models.Model):
     text = models.CharField(max_length=200)
     str_value = models.CharField(max_length=200, blank=True)
-    int_value = models.IntegerField(blank=True)
-    float_value = models.FloatField(blank=True)
+    int_value = models.IntegerField(null=True, blank=True)
+    float_value = models.FloatField(null=True, blank=True)
     bool_value = models.BooleanField()
     order = models.IntegerField(blank=True)
     grouping = models.ForeignKey(OptionGroup, on_delete=models.CASCADE)
@@ -62,8 +62,8 @@ class Response(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     respondent = models.ForeignKey(Respondent, on_delete=models.CASCADE)
     str_value = models.CharField(max_length=200, blank=True)
-    int_value = models.IntegerField(blank=True)
-    float_value = models.FloatField(blank=True)
+    int_value = models.IntegerField(null=True, blank=True)
+    float_value = models.FloatField(null=True, blank=True)
     bool_value = models.BooleanField()
     option = models.ForeignKey(Option, blank=True, null=True,
                                on_delete=models.CASCADE)

@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from survey.views import *
+
+router = DefaultRouter()
+router.register(r'surveys', SurveyViewSet)
+router.register(r'groupings', GroupingViewSet)
+router.register(r'options', OptionViewSet)
+router.register(r'optiongroups', OptionGroupViewSet)
+router.register(r'questions', QuestionViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+urlpatterns += router.urls
